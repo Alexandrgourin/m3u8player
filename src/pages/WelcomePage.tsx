@@ -1,6 +1,18 @@
 import type React from 'react';
 
+import { useEffect } from 'react';
+
 const WelcomePage: React.FC = () => {
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://cloud.umami.is/script.js';
+    script.defer = true;
+    script.setAttribute('data-website-id', 'ef5e5888-1238-404d-834b-c4b5ea6b380a');
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
   return (
     <div className="min-h-screen bg-[#f6f6f7] flex items-center justify-center p-4 sm:p-6 md:p-8">
       <main className="max-w-4xl mx-auto text-center">
